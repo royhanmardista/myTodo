@@ -1,0 +1,71 @@
+body {
+    background: rgb(180,106,58);
+background: linear-gradient(90deg, rgba(180,106,58,1) 0%, rgba(253,158,29,1) 24%, rgba(252,119,69,1) 76%);    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    /* background-position: center;
+    background-repeat: no-repeat; */
+    background-size: cover;
+}
+
+.main-page {
+    width: 80%;
+    margin: 40px auto;
+}
+
+#user, #todo {
+    min-height: 60px;
+    /* background-color: gray; */
+    
+}
+.profile {
+    padding: 2%;
+}
+
+.btn {
+    background-color: rgb(38, 174, 216);
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(231, 172, 61);
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+.card {
+    padding : 0px ;
+}
+
+#add-button, #add-project {
+    background-color: white;
+    color: green;
+    border: 1px green solid;
+}
+
+#add-button:hover, #add-project:hover {
+    background-color: green;
+    color: white;
+    border: 1px white solid;
+
+}
+
+#deleteMember {
+    background-color: white;
+    color: red; 
+    border: 1px red solid;   
+}
+
+#deleteMember:hover {
+    background-color: red;
+    color: white;
+    border: 1px white solid;
+}
+
+a {
+    cursor: pointer;
+}

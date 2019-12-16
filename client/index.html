@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Poppins:800&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- sdk google signin -->
+    <meta name="google-signin-client_id" content="628697528399-tm5hqkb025uttnahfoj889flu2jg3hvm.apps.googleusercontent.com">
+    <title>My todo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+    <!-- ini untuk icon -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+    
+</head>
+<body>    
+    
+    <nav class="navbar navbar-light bg-dark text-light" style="background-color: rgb(42, 106, 179) !important;">
+        <a class="navbar-brand " style=" font-weight: bold; font-size: 250%; font-family: 'Titillium Web', sans-serif;
+        ">My Todo</a>
+        <form class="form-inline" >
+            <div class="d-flex justify-content-between">
+                <!-- ini login google -->
+                <div id="google" class="g-signin2 pl-3 mr-3" data-onsuccess="onSignIn"></div>                  
+            </div> 
+            <a id="logout" style="display: none;" class="btn btn-light my-2 my-sm-0" href="" onclick="signOut();"> Sign out </a>            
+        </form>
+    </nav>
+
+    <!-- fornt-page start -->
+    <div id="front-page" class="container">
+        <div style="width: 90%; margin:40px auto ;" class="row">
+            <div style="margin: 10px auto; background-color: #A9CBB7;" class="px-4 py-5 rounded col-md-5 col-sm-11 col-xs-11">
+                <h5 class="display-4 text-center" style="padding-bottom: 10px; font-family: 'Fjalla One', sans-serif;
+                " >Get Start For Free</h5>
+                <form id="register" >
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input id="username" type="text" class="form-control" required aria-describedby="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input id="email" type="email" class="form-control" required aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input id="password" type="password" class="form-control" required placeholder="Password">
+                    </div>       
+                    <div class="d-flex flex-row justify-content-between pt-4" style="margin: 5px auto;">
+                        <button  type="submit" class="btn">Register</button> 
+                        <button id='to_login' class="btn  ml-3">To login page</button>                                                                   
+                    </div>                                          
+                </form>
+
+                <form id="login" style="display: none;">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input id="email_login" type="email" class="form-control" required aria-describedby="emailHelp" placeholder="Enter email">                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input id="password_login" type="password" class="form-control" required placeholder="Password">
+                    </div>       
+                    <div class="d-flex flex-row justify-content-between pt-4" style="margin: 5px auto;">
+                        <button  type="submit" class="btn ">Sign in</button> 
+                        <button id='to_register' class="btn  ml-3">To Register page</button>      
+                    </div>   
+                </form>
+            </div>  
+                 
+         </div> 
+    </div> 
+    <!-- front-page end -->
+    <!-- main-page start-->
+    <div id="main-page" style="display: none;" >
+        <section class="container-fluid">
+            <div class="d-flex flex-column">
+                <div class="row">
+                    <div class="col-md-2 mr-0 col-xs-10 offset-xs-1 mt-4 offset-md-1">
+                        <div class="card">
+                            <div class="card-header bg-light text-center text-dark h1" id="user" style="font-family: 'Acme', sans-serif;">
+                                User
+                            </div>
+                            <ul class="list-group list-group-flush">  
+                            <!--ini user profile  -->
+                                <li class=" pl-0 bg-white list-group-card">                                     
+                                    <li class="list-group-item" id="user-email">Email</li>                                                
+                                </li>
+                                <li class="list-group-item"> 
+                                    <a href="" onclick="viewTodoToday()" id="today-list">
+                                        <i class="glyphicon glyphicon-calendar"></i> Today
+                                    </a>
+                                </li>
+                                <li class="list-group-item"> 
+                                    <a href="" id="all-list">
+                                        <i class="glyphicon glyphicon-list-alt"></i> All todo list 
+                                    </a>
+                                </li> 
+                                <li class="list-group-item"> 
+                                    <a href="" id="all-project">
+                                        <i class="glyphicon glyphicon-list-alt"></i> All Project 
+                                    </a>
+                                </li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 todo  pl-0 pr-0 ml-1 mt-4 pr-1">
+                        <div id="todo">
+                            <div class="card-header h1 text-center text-dark bg-light" id="todo" style="font-family: 'Acme', sans-serif;">
+                                Todo List
+                            </div>
+                            <!-- ini wadah untuk menampung todo list untuk setiap user -->
+                            <ul id="todo-container" class="list-group list-group-flush">                            
+                                <li class="list-group-item pt-5 pb-5" id="empty-todo">
+                                    <div class="" style="width: 50%; margin : 0px auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">Todays Activity</h5>
+                                            <p class="card-text">It seems that you have no activity, do you want to add new todo list ?</p>
+                                            <button class="btn" id="add-button">
+                                                <i class="glyphicon glyphicon-plus-sign"  ></i>
+                                                Add Activity</button>
+                                        </div>
+                                    </div>
+                                </li> 
+                                <li>
+                                    <div class="d-flex border rounded bg-white py-3">
+                                        <form id="todo_form" class="col-sm-8 offset-2">
+                                                <h2 class="text-center">Form Add Todo</h2>
+                                            <div class="form-row align-items-center pl-1">
+                                                <div class="col-sm-12 my-2">
+                                                    <label for="input_title">Title</label>
+                                                    <input type="text" class="form-control" required id="input_title" placeholder="Please fill the title">
+                                                </div>
+                                                <div class="col-sm-12 my-2">
+                                                    <label for="input_description">Description</label>
+                                                    <textarea class="form-control" required id="input_description" placeholder="Please fill your the discription"></textarea>
+                                                </div>
+                                                <div class="col-sm-12 my-1">
+                                                    <label for="input_date">Date</label>
+                                                    <input type="date" class="form-control" required id="input_date" placeholder="input date">
+                                                </div>   
+                                                <div class="col-sm-12 my-1">
+                                                    <label for="input_time">Time</label>
+                                                    <input type="time" class="form-control" required id="input_time" placeholder="input time">
+                                                </div>                                
+                                                <div class="col-auto my-1 pt-0 pb-0">
+                                                    <button type="submit" class="btn ">Add</button>
+                                                    <button class="btn ">Cencel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>                             
+                            </ul>
+                        </div>
+                        <!-- container todo -->
+
+                        <!-- container project -->
+                        <div id="project">
+                                <div class="card-header h1 text-center text-dark bg-light pr-1" id="todo" style="font-family: 'Acme', sans-serif;">
+                                    Project List
+                                </div>
+                                <!-- ini wadah untuk menampung todo list untuk setiap user -->
+                                <ul id="project-container" class="list-group list-group-flush">                            
+                                    <li class="list-group-item pt-5 pb-5" id="empty-todo">
+                                        <div class="" style="width: 50%; margin : 0px auto;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Todays Activity</h5>
+                                                <p class="card-text">It seems that you have no activity, do you want to add new todo list ?</p>
+                                                <button class="btn" id="add-button">
+                                                    <i class="glyphicon glyphicon-plus-sign"  ></i>
+                                                    Add Project</button>
+                                            </div>
+                                        </div>
+                                    </li>                                                           
+                                </ul>
+                        </div>
+                        <!-- container project end -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- main page end -->
+
+    
+
+
+</body>
+<!-- ini untuk jquery -->
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+</script>    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<!-- ini untuk google -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>    
+<!-- ini untuk sweetalert2 -->
+<script src="https://www.avatarapi.com/js.aspx?email=peter.smith@gmail.com&size=128">
+</script>
+<!-- main.js taruh paling bawah -->
+<script src="./main.js"></script>
+<script src="./project.js"></script>
+</html>
